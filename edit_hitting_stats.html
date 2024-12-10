@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Hitting Stats</title>
+</head>
+<body>
+    <h1>Edit Hitting Stats for Player {{ stats.player_id }}</h1>
+    <form method="POST">
+        <label for="batting_average">Batting Average:</label>
+        <input type="text" name="batting_average" value="{{ stats.batting_average }}"><br>
+
+        <label for="hits">Hits:</label>
+        <input type="text" name="hits" value="{{ stats.hits }}"><br>
+
+        <label for="homeruns">Home Runs:</label>
+        <input type="text" name="home_runs" value="{{ stats.home_runs }}"><br>
+
+        <label for="walks">Walks:</label>
+        <input type="text" name="walks" value="{{ stats.walks }}"><br>
+
+        <label for="strikeouts">Strikeouts:</label>
+        <input type="text" name="strikeouts" value="{{ stats.strikeouts }}"><br>
+
+        <label for="stolen_bases">Stolen Bases:</label>
+        <input type="text" name="stolen_bases" value="{{ stats.stolen_bases }}"><br>
+
+        <label for="h_war">Hitting WAR:</label>
+        <input type="text" name="h_war" value="{{ stats.h_war }}"><br>
+
+        <button type="submit">Update Stats</button>
+    </form>
+</body>
+</html>

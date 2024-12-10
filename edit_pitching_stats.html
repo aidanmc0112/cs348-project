@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Pitching Stats</title>
+</head>
+<body>
+    <h1>Edit Pitching Stats for Player {{ stats.player_id }}</h1>
+    <form method="POST">
+        <label for="earned_run_average">Earned Run Average:</label>
+        <input type="text" name="earned_run_average" value="{{ stats.earned_run_average }}"><br>
+
+        <label for="saves">Saves:</label>
+        <input type="text" name="saves" value="{{ stats.saves }}"><br>
+
+        <label for="wins">Wins:</label>
+        <input type="text" name="wins" value="{{ stats.wins }}"><br>
+
+        <label for="walks">Walks:</label>
+        <input type="text" name="walks" value="{{ stats.walks }}"><br>
+
+        <label for="strikeouts">Strikeouts:</label>
+        <input type="text" name="strikeouts" value="{{ stats.strikeouts }}"><br>
+
+        <label for="innings">Innings:</label>
+        <input type="text" name="innings" value="{{ stats.innings }}"><br>
+
+        <label for="p_war">Pitching WAR:</label>
+        <input type="text" name="p_war" value="{{ stats.p_war }}"><br>
+
+        <button type="submit">Update Stats</button>
+    </form>
+</body>
+</html>

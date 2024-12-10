@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player.player_name }} Stats</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+    <h1 class="mt-5">Stats for {{ player.player_name }}</h1>
+    <p><strong>Position:</strong> {{ player.position }}</p>
+    <p><strong>Team:</strong> {{ player.hall_team }}</p>
+    <p><strong>Debut:</strong> {{ player.debut }}</p>
+    <p><strong>Retired:</strong> {{ player.retired }}</p>
+
+    <h2>Hitting Stats</h2>
+    {% if hitting_stats %}
+    <ul>
+        <li>Batting Average: {{ hitting_stats.batting_average }}</li>
+        <li>Hits: {{ hitting_stats.hits }}</li>
+        <li>Home Runs: {{ hitting_stats.home_runs }}</li>
+        <li>Stolen Bases: {{ hitting_stats.stolen_bases }}</li>
+        <li>Walks: {{ hitting_stats.walks }}</li>
+        <li>Strikeouts: {{ hitting_stats.strikeouts }}</li>
+        <li>WAR: {{ hitting_stats.h_war }}</li>
+    </ul>
+    {% else %}
+    <p>No hitting stats available for this player.</p>
+    {% endif %}
+
+    <h2>Pitching Stats</h2>
+    {% if pitching_stats %}
+    <ul>
+        <li>ERA: {{ pitching_stats.earned_run_average }}</li>
+        <li>Innings: {{ pitching_stats.innings }}</li>
+        <li>Wins: {{ pitching_stats.wins }}</li>
+        <li>Walks: {{ pitching_stats.walks }}</li>
+        <li>Strikeouts: {{ pitching_stats.strikeouts }}</li>
+        <li>Saves: {{ pitching_stats.saves }}</li>
+        <li>WAR: {{ pitching_stats.p_war }}</li>
+    </ul>
+    {% else %}
+    <p>No pitching stats available for this player.</p>
+    {% endif %}
+
+    <a href="/" class="btn btn-primary mt-3">Back to Player List</a>
+</body>
+</html>

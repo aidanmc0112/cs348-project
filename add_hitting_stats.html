@@ -1,0 +1,26 @@
+<form method="POST">
+    <input type="hidden" name="player_id" value="{{ player_id }}">
+    
+    <label for="batting_average">Batting Average:</label>
+    <input type="number" step="0.001" name="batting_average" required>
+    
+    <label for="hits">Hits:</label>
+    <input type="number" name="hits" required>
+    
+    <label for="home_runs">Home Runs:</label>
+    <input type="number" name="home_runs" required>
+    
+    <label for="walks">Walks:</label>
+    <input type="number" name="walks" required>
+    
+    <label for="strikeouts">Strikeouts:</label>
+    <input type="number" name="strikeouts" required>
+    
+    <label for="stolen_bases">Stolen Bases:</label>
+    <input type="number" name="stolen_bases" required>
+    
+    <label for="h_war">Hitting WAR:</label>
+    <input type="number" step="0.001" name="h_war" required>
+
+    <button type="submit">Add Hitting Stats</button>
+</form>

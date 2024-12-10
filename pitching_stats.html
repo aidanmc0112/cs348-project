@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitching Stats</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Track the sort order for each column
+        const sortDirections = {};
+
+        function sortTable(columnIndex, isNumeric) {
+            const table = document.getElementById("pitchingStatsTable");
+            const rows = Array.from(table.rows).slice(1); // Skip the header row
+
+            // Determine the sort direction for the column
+            const currentDirection = sortDirections[columnIndex] || "asc";
+            const newDirection = currentDirection === "asc" ? "desc" : "asc";
+            sortDirections[columnIndex] = newDirection;
+
+            const sortedRows = rows.sort((a, b) => {
+                const aText = a.cells[columnIndex].textContent.trim();
+                const bText = b.cells[columnIndex].textContent.trim();
+
+                const comparison = isNumeric
+                    ? parseFloat(aText) - parseFloat(bText)
+                    : aText.localeCompare(bText);
+
+                // Adjust comparison for descending order
+                return newDirection === "asc" ? comparison : -comparison;
+            });
+
+            // Re-append the sorted rows to the table
+            const tbody = table.querySelector("tbody");
+            tbody.innerHTML = "";
+            sortedRows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</head>
+<body>
+    <h1>Career Pitching Stats</h1>
+    <table id="pitchingStatsTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0, true)">ID</th>
+                <th onclick="sortTable(1, true)">Player ID</th>
+                <th onclick="sortTable(2, false)">Player Name</th>
+                <th onclick="sortTable(3, true)">Earned Run Average</th>
+                <th onclick="sortTable(4, true)">Saves</th>
+                <th onclick="sortTable(5, true)">Wins</th>
+                <th onclick="sortTable(6, true)">Walks</th>
+                <th onclick="sortTable(7, true)">Strikeouts</th>
+                <th onclick="sortTable(8, true)">Innings</th>
+                <th onclick="sortTable(9, true)">Pitching WAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in career_stats_pitching %}
+            {% if stat.innings > 0 %}
+            <tr>
+                <td>{{ stat.id }}</td>
+                <td>{{ stat.player_id }}</td>
+                <td>{{ stat.player_name }}</td>
+                <td>{{ stat.earned_run_average }}</td>
+                <td>{{ stat.saves }}</td>
+                <td>{{ stat.wins }}</td>
+                <td>{{ stat.walks }}</td>
+                <td>{{ stat.strikeouts }}</td>
+                <td>{{ stat.innings }}</td>
+                <td>{{ stat.p_war }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        
+    </table>
+</body>
+</html>
