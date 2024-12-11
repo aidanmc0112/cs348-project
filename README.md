@@ -1,2 +1,2 @@
 # cs348-project
-aidan mclaughlin HallOfVeryGood
+pip install -r requirement.txt
